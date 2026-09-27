@@ -362,15 +362,19 @@
           <li>🕘<span><b>Hours</b>Mon–Sat, responsive to EU &amp; US time zones</span></li>
         </ul>
       </div>
-      <form onsubmit="event.preventDefault(); this.innerHTML='<p style=\'padding:30px 0;text-align:center;font-size:16px\'>Thank you — we\'ll reply within one business day. ✉️</p>';">
+      <form id="inquiry-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="d66efb7c-7c05-4f2e-b785-9ea5e0d3662d">
+        <input type="hidden" name="subject" value="New Inquiry from ascenda.asia">
+        <input type="hidden" name="from_name" value="Ascenda Website">
+        <input type="checkbox" name="botcheck" style="display:none">
         <div class="frow">
-          <div><label>Your Name</label><input type="text" required placeholder="Jane Smith"></div>
-          <div><label>Email</label><input type="email" required placeholder="jane@brand.com"></div>
+          <div><label>Your Name</label><input type="text" name="name" required placeholder="Jane Smith"></div>
+          <div><label>Email</label><input type="email" name="email" required placeholder="jane@brand.com"></div>
         </div>
         <div class="frow">
-          <div><label>Brand / Company</label><input type="text" placeholder="Brand name"></div>
+          <div><label>Brand / Company</label><input type="text" name="brand" placeholder="Brand name"></div>
           <div><label>Estimated Quantity</label>
-            <select>
+            <select name="quantity">
               <option>50 – 200 pcs</option>
               <option>200 – 500 pcs</option>
               <option>500 – 2,000 pcs</option>
@@ -379,14 +383,14 @@
           </div>
         </div>
         <label>Product Category</label>
-        <select>
+        <select name="category">
           <option>Knitwear (dresses / tops / sweaters)</option>
           <option>Woven (blouses / shirts)</option>
           <option>Woven (skirts / pants)</option>
           <option>Mixed / Not sure yet</option>
         </select>
         <label>Project Details</label>
-        <textarea rows="4" placeholder="Styles, fabrics, target FOB, delivery date…"></textarea>
+        <textarea name="details" rows="4" placeholder="Styles, fabrics, target FOB, delivery date…"></textarea>
         <button class="submit" type="submit">Send Inquiry</button>
         <p class="form-note">We reply within one business day. Your information stays confidential.</p>
       </form>
@@ -411,6 +415,40 @@
   </div>
   <div class="wrap copy">© 2026 Ascenda Apparel. All rights reserved.</div>
 </footer>
+
+<script>
+(function(){
+  var form = document.getElementById('inquiry-form');
+  if(!form) return;
+  var btn = form.querySelector('button.submit');
+  var note = form.querySelector('.form-note');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    var data = {};
+    new FormData(form).forEach(function(v, k){ data[k] = v; });
+    delete data.botcheck;
+    data.access_key = 'd66efb7c-7c05-4f2e-b785-9ea5e0d3662d';
+    data.subject = 'New Inquiry from ascenda.asia';
+    data.from_name = 'Ascenda Website';
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function(r){ return r.json(); }).then(function(res){
+      if(res.success){
+        form.innerHTML = '<p style="padding:30px 0;text-align:center;font-size:16px">Thank you — we\'ll reply within one business day. ✉️</p>';
+      } else { throw new Error('submit failed'); }
+    }).catch(function(){
+      btn.disabled = false;
+      btn.textContent = 'Send Inquiry';
+      note.textContent = 'Something went wrong — please email us directly at sales@ascenda.asia.';
+      note.style.color = '#b3452e';
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
