@@ -4,6 +4,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ascenda — Knit &amp; Woven Womenswear Manufacturing, Small-Order Friendly</title>
 <link rel="canonical" href="https://ascenda.asia/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ascenda">
+<meta property="og:url" content="https://ascenda.asia/">
+<meta property="og:title" content="Ascenda — Knit &amp; Woven Womenswear Manufacturing, Small-Order Friendly">
+<meta property="og:description" content="China-based apparel trading partner for European and American womenswear brands. From 400 pcs per style, sampling in 7–10 days.">
+<meta property="og:image" content="https://ascenda.asia/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ascenda — Knit &amp; Woven Womenswear Manufacturing, Small-Order Friendly">
+<meta name="twitter:description" content="From 400 pcs per style, sampling in 7–10 days. EU &amp; US compliance ready.">
+<meta name="twitter:image" content="https://ascenda.asia/og-image.png">
 <meta name="description" content="Ascenda is a China-based apparel trading partner specializing in small-batch knit and woven womenswear for European and American brands. Low MOQs, fast sampling, reliable delivery.">
 <style>
   :root{
@@ -371,13 +388,13 @@
         <input type="hidden" name="from_name" value="Ascenda Website">
         <input type="checkbox" name="botcheck" style="display:none">
         <div class="frow">
-          <div><label>Your Name</label><input type="text" name="name" required placeholder="Jane Smith"></div>
-          <div><label>Email</label><input type="email" name="email" required placeholder="jane@brand.com"></div>
+          <div><label for="f-name">Your Name</label><input type="text" id="f-name" name="name" required placeholder="Jane Smith"></div>
+          <div><label for="f-email">Email</label><input type="email" id="f-email" name="email" required placeholder="jane@brand.com"></div>
         </div>
         <div class="frow">
-          <div><label>Brand / Company</label><input type="text" name="brand" placeholder="Brand name"></div>
-          <div><label>Estimated Quantity</label>
-            <select name="quantity">
+          <div><label for="f-brand">Brand / Company</label><input type="text" id="f-brand" name="brand" placeholder="Brand name"></div>
+          <div><label for="f-quantity">Estimated Quantity</label>
+            <select id="f-quantity" name="quantity">
               <option>400 – 800 pcs</option>
               <option>800 – 2,000 pcs</option>
               <option>2,000 – 5,000 pcs</option>
@@ -385,15 +402,15 @@
             </select>
           </div>
         </div>
-        <label>Product Category</label>
-        <select name="category">
+        <label for="f-category">Product Category</label>
+        <select id="f-category" name="category">
           <option>Knitwear (dresses / tops / sweaters)</option>
           <option>Woven (blouses / shirts)</option>
           <option>Woven (skirts / pants)</option>
           <option>Mixed / Not sure yet</option>
         </select>
-        <label>Project Details</label>
-        <textarea name="details" rows="4" placeholder="Styles, fabrics, target FOB, delivery date…"></textarea>
+        <label for="f-details">Project Details</label>
+        <textarea id="f-details" name="details" rows="4" placeholder="Styles, fabrics, target FOB, delivery date…"></textarea>
         <button class="submit" type="submit">Send Inquiry</button>
         <p class="form-note">We reply within one business day. Your information stays confidential.</p>
       </form>
