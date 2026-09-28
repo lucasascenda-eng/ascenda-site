@@ -1,18 +1,17 @@
 # Ascenda Site
 
-静态官网，托管在 GitHub Pages，绑定自定义域名 `ascenda.asia`。
+静态官网源码，托管在 **Cloudflare Pages**，绑定自定义域名 `ascenda.asia`。
 
 - 入口：`index.html`
 - 产品图：`assets/web/`
-- `CNAME`：GitHub Pages 自定义域名配置（内容为 ascenda.asia）
-- `.nojekyll`：跳过 Jekyll 处理，按原样发布
+- 联系表单：接入 Web3Forms，提交后邮件发送至 sales@ascenda.asia
+
+## 部署方式
+
+Cloudflare Pages 已连接本仓库，推送到 main 分支会自动构建部署，约 1 分钟全球生效。
 
 ## 更新流程
-
-改完文件后：
 
 ```bash
 git add -A && git commit -m "update" && git push
 ```
-
-GitHub Pages 会在约 1 分钟内自动重新发布。
